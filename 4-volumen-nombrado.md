@@ -66,28 +66,21 @@ docker volume create drupal-modules
 docker volume create drupal-profiles
 docker volume create drupal-sites
 docker volume create drupal-themes
-# preparar el volumen antes de montar archivos sites
+# Preparar el volumen drupal-sites con los archivos iniciales de la imagen:
 docker run --rm -v drupal-sites:/temporary/sites drupal cp -aRT /var/www/html/sites /temporary/sites
-
-docker run -d --name server-drupal --publish 9700:80 -v drupal-modules:/var/www/html/modules -v drupal-profiles:/var/www/html/profiles -v drupal-sites:/var/www/html/sites -v drupal-themes:/var/www/html/themes --network net-drupal drupal
 ```
 ### Crear el contenedor server-drupal vinculado a la red, usar la imagen drupal, y vincularlo a los volúmenes nombrados
 ```
 docker run -d --name server-drupal --publish published=9700,target=80 -v <nombre volumen>:<ruta contenedor> -v <nombre volumen>:<ruta contenedor> -v <nombre volumen>:<ruta contenedor> -v <nombre volumen>:<ruta contenedor> --network net-drupal drupal
 ```
-Instrucción realizada:
-```
-docker run -d --name server-drupal --publish 9700:80 -v drupal-modules:/var/www/html/modules -v drupal-profiles:/var/www/html/profiles -v drupal-sites:/var/www/html/sites -v drupal-themes:/var/www/html/themes --network net-drupal drupal
-```
+
 
 ### Ingrese al server-drupal y siga el paso a paso para la instalación.
-# COMPLETAR CON UNA CAPTURA DE PANTALLA DEL PASO 4
-
-_La instalación puede tomar varios minutos, mientras espera realice un diagrama de los contenedores que ha creado en este apartado._
 <img width="667*2" height="335*2" alt="image" src="https://github.com/user-attachments/assets/1f646494-34f5-4869-b205-57910e814905" />
 
-# COMPLETAR CON EL DIAGRAMA SOLICITADO
+_La instalación puede tomar varios minutos, mientras espera realice un diagrama de los contenedores que ha creado en este apartado._
 
+![Diagrama de contenedores del ejercicio 4](./diagrama-ejercicio4-variables-entorno-Vinueza-Gabriel.svg)
 ### Eliminar un volumen específico
 ```
 docker volume rm <nombre volumen>
