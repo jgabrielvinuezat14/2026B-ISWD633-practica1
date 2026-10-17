@@ -25,7 +25,9 @@ El archivo index.html original del contenedor queda oculto debido a que el bind 
 ### ¿Qué sucede al ingresar al servidor de nginx?
 Aparece cargado el template descargado, con el mensaje:" Hi, I'm Photon, another fine little freebie from HTML5 UP. ".
 ### Eliminar el contenedor
+```
 docker rm -f srv-nginx-alpine
+```
 ### ¿Qué sucede al crear nuevamente un contenedor montado al directorio definidos anteriormente?
 Al crear otra ves el contenedor, la página web del template descargado vuelve a mostrarse al ingresar al servidor Nginx. Esto es debido a que los archivos del template permanecen almacenados en la carpeta C:\nginx\html del host y no se pierden cuando se eliminó prerviamente el contenedor anterior.
 
